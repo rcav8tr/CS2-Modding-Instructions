@@ -80,7 +80,7 @@ $([System.IO.File]::ReadAllText('.\ChangeLog.md').TrimEnd())
 </ChangeLog>
 
     <!-- External links. Supported types are discord, github, youtube, twitch, x, paypal, patreon.  Can be set multiple times. -->
-    <ExternalLink Type="github" Url="https://github.com/rcav8tr/CS2Mod-$(AssemblyName)" />
+    <ExternalLink Type="github" Url="https://github.com/<GitHubUsername>/CS2Mod-$(AssemblyName)" />
 </Publish>
                 ]]>
             </GeneratedText>
