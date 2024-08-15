@@ -1,6 +1,6 @@
 ﻿<Project>
     <!-- Create an C# class file with assembly information. -->
-    <Target AddAssemblyInformationBeforeTargets="BeforeCompile;CoreCompile" Inputs="$(MSBuildAllProjects)" Outputs="$(IntermediateOutputPath)GeneratedFile.xml">
+    <Target Name="AddAssemblyInformation" BeforeTargets="BeforeCompile;CoreCompile" Inputs="$(MSBuildAllProjects)" Outputs="$(IntermediateOutputPath)GeneratedFile.xml">
         <PropertyGroup>
             <GeneratedText>
                 <![CDATA[
