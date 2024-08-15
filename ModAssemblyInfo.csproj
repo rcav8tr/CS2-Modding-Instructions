@@ -1,8 +1,7 @@
 ﻿<Project>
     <!-- Create an C# class file with assembly information. -->
-    <Target Name="AddPublishConfiguration" BeforeTargets="BeforeCompile;CoreCompile" Inputs="$(MSBuildAllProjects)" Outputs="$(IntermediateOutputPath)GeneratedFile.xml">
+    <Target AddAssemblyInformationBeforeTargets="BeforeCompile;CoreCompile" Inputs="$(MSBuildAllProjects)" Outputs="$(IntermediateOutputPath)GeneratedFile.xml">
         <PropertyGroup>
-            <!-- The generated text is based on the PublishConfiguration.xml file that comes with the Paradox mod template. -->
             <GeneratedText>
                 <![CDATA[
 // DO NOT MODIFY THIS FILE.
