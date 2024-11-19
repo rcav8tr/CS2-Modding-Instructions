@@ -79,7 +79,7 @@ $(Screenshot00)$(Screenshot01)$(Screenshot02)$(Screenshot03)$(Screenshot04)$(Scr
 $([System.IO.File]::ReadAllText('.\ChangeLog.md').TrimEnd())
 </ChangeLog>
 
-    <!-- External links. Supported types are discord, github, youtube, twitch, x, paypal, patreon.  Can be set multiple times. -->
+    <!-- External links. Supported types are discord, github, youtube, twitch, x, paypal, patreon, buymeacoffee, kofi, crowdin, gitlab.  Can be set multiple times. -->
     <ExternalLink Type="github" Url="https://github.com/<GitHubUsername>/CS2Mod-$(AssemblyName)" />
 </Publish>
                 ]]>
