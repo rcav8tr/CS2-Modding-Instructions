@@ -39,8 +39,8 @@
 <!-- Make any needed changes in PublishConfiguration.csproj. -->
 
 <Publish>
-    <!-- Mod ID is not required for publishing a mod for the first time.  Mod ID must be set in order to update an existing mod. -->
-    <ModId Value="" />
+    <!-- Mod ID must be 0 for publishing a mod for the first time.  Mod ID must be set in order to update an existing mod. -->
+    <ModId Value="0" />
 
     <!-- Name of the mod to display to players.  Copied from assembly Title. -->
     <DisplayName Value="$(Title)" />
