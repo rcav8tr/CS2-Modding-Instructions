@@ -1,30 +1,41 @@
 ﻿<Project>
     <!-- Create the mod.json file using assembly info. -->
     <Target Name="BuildModJSON" BeforeTargets="BeforeCompile;CoreCompile" Inputs="$(MSBuildAllProjects)" Outputs="$(IntermediateOutputPath)GeneratedFile.cs">
-        <Error Condition="!$([System.IO.File]::Exists($(PDXAccountDataPath)))" Code="MJ0001"
-            Text="Error building 'mod.json' file -- Paradox account data file not found '$(PDXAccountDataPath)'." />
-        
-        <ReadLinesFromFile File="$(PDXAccountDataPath)">
-            <Output TaskParameter="Lines" PropertyName="PDXAccountDataFileLines"/>
+        <!-- Define mod.json file. -->
+        <PropertyGroup>
+            <ModJsonFile>$(ProjectDir)UI\mod.json</ModJsonFile>
+        </PropertyGroup>
+
+        <!-- mod.json file must already exist. -->
+        <Error Condition="!$([System.IO.File]::Exists($(ModJsonFile)))" Code="MJ0001"
+            Text="Error building 'mod.json' file -- file not found '$(ModJsonFile)'." />
+
+        <!-- Read existing mod.json file lines. -->
+        <ReadLinesFromFile File="$(ModJsonFile)">
+            <Output TaskParameter="Lines" PropertyName="ModJsonFileLines"/>
         </ReadLinesFromFile>
 
         <PropertyGroup>
-            <PDXAccountUsername>$([System.String]::Copy($(PDXAccountDataFileLines)).Split(';')[0])</PDXAccountUsername>
+            <!-- Get author line from exising mod.json file line number 2 (zero based). -->
+            <AuthorLine>$([System.String]::Copy($(ModJsonFileLines)).Split(';')[2])</AuthorLine>
+
+            <!-- Recreate the mod.json file contents using assembly info and author line. -->
             <GeneratedText>
                 <![CDATA[
 {
     "id": "$(AssemblyName)",
-    "author": "$(PDXAccountUsername)",
+    $(AuthorLine)
     "version": "$(Version)",
     "dependencies": []
 }
 				]]>
             </GeneratedText>
-            <GeneratedFilePath>$(ProjectDir)UI\mod.json</GeneratedFilePath>
         </PropertyGroup>
+        
+        <!-- Write the generated text to the mod.json file. -->
         <ItemGroup>
-            <FileWrites Include="$(GeneratedFilePath)" />
+            <FileWrites Include="$(ModJsonFile)" />
         </ItemGroup>
-        <WriteLinesToFile Lines="$(GeneratedText)" File="$(GeneratedFilePath)" WriteOnlyWhenDifferent="true" Overwrite="true" />
+        <WriteLinesToFile Lines="$(GeneratedText)" File="$(ModJsonFile)" WriteOnlyWhenDifferent="true" Overwrite="true" />
     </Target>
 </Project>
