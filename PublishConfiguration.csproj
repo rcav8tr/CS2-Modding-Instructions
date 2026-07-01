@@ -84,7 +84,7 @@ $([System.IO.File]::ReadAllText('.\ChangeLog.md').TrimEnd())
 </ChangeLog>
 
     <!-- External links.  Can be set multiple times. -->
-    <!-- Supported types are discord, github, youtube, twitch, x, paypal, patreon, buymeacoffee, kofi, crowdin, gitlab, gofundme. -->
+    <!-- Supported types are discord, github, youtube, twitch, x, paypal, patreon, buymeacoffee, kofi, crowdin, gitlab, gofundme, bluesky. -->
     <ExternalLink Type="github" Url="https://github.com/<GitHubUsername>/CS2Mod-$(AssemblyName)" />
 
     <!-- Access Control Level.  Supported values: Public, Private, Unlisted -->
